@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'hjkba3dai^bjiwcyr43xkgsrq(#x=1dl70+gfk1ny4!%1o)x!-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -119,10 +119,37 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'estaticos_sitios/raynhard_estaticos')
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'estaticos_sitios/raynhard_estaticos')
-
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
 CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': '420',
+        'width': '100%',
+        "removePlugins": "stylesheetparser",
+        "allowedContent" : True,
+        "fullPage": True,
+        "autoParagraph": False,
+        "basicEntities": False,
+        "entities": False,
+        "entities_greek ": False,
+        "entities_latin": False
+    },
+    'documentacion': {
+        'toolbar': 'full',
+        'height': '420',
+        'width': '100%',
+        "removePlugins": "stylesheetparser",
+        "allowedContent" : True,
+    },
+}

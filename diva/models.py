@@ -23,3 +23,9 @@ class Question3(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     content = RichTextUploadingField()
+
+
+class Question4(models.Model):
+    question_text = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+    content = RichTextUploadingField(config_name='documentacion')
